@@ -123,7 +123,7 @@ require(['Vue', 'vuex', 'vue2-filters', 'vue_router', 'routes', 'vuex-router-syn
                     {
                         name: "Center Information",
                         id: "menu2",
-                        // href: "#",
+                        href: "#",
                         sub_menu: [
                             {
                                 name: "Contact Us",
