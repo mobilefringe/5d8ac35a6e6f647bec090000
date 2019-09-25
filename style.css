@@ -651,7 +651,6 @@ img{
 .home_title {
     margin-bottom: 30px;
     text-transform: uppercase;
-    color: $secondary;
 }
 .home_events {
     display: -webkit-box;
