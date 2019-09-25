@@ -138,16 +138,6 @@
                 });
             },
             watch: {
-                $route: function() {
-                    this.query = this.$route.query.category
-                    if(this.query == "dining_full_service"){
-                      this.selectedCat = "Dining Full Service";
-                      this.filterByCategory;
-                    } else {
-                        this.selectedCat = "All";
-                        this.filteredStores = this.allStores;
-                    }    
-                },
                 selectedCat: function() {
                     this.$nextTick(function() {
                         Vue.prototype.$redrawVueMasonry();
@@ -203,7 +193,7 @@
                     _.forEach(store_cats, function(value, key) {
                         _.forEach(value.categories, function(category, key) {
                             var current_category = vm.findCategoryById(category)
-                            if(!_.includes(cats, current_category.name)) {
+                            if (!_.includes(cats, current_category.name)) {
                                 
                                 cats.push(current_category.name)
                             }
@@ -239,7 +229,10 @@
             methods: {
                 loadData: async function() {
                     try {
-                        let results = await Promise.all([this.$store.dispatch("getData", "categories"), this.$store.dispatch("getData", "repos")]);
+                        let results = await Promise.all([
+                            this.$store.dispatch("getData", "categories"), 
+                            this.$store.dispatch("getData", "repos")
+                        ]);
                     } catch (e) {
                         console.log("Error loading data: " + e.message);
                     }
