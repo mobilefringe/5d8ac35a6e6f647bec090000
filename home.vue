@@ -274,7 +274,7 @@
                             this.$store.dispatch("getData", "banners"), 
                             this.$store.dispatch("getData","promotions"), 
                             this.$store.dispatch("getData", "events"), 
-                            this.$store.dispatch('LOAD_PAGE_DATA', { url: "https://landing.mallmaverick.com/api/v4/landing/social.json" })
+                            this.$store.dispatch('LOAD_PAGE_DATA', { url: "https://rivermark.mallmaverick.com/api/v4/rivermark/social.json" })
                         ]);
                         return results;
                     } catch(e) {
