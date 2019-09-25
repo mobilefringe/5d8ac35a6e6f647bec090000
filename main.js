@@ -160,18 +160,13 @@ require(['Vue', 'vuex', 'vue2-filters', 'vue_router', 'routes', 'vuex-router-syn
                 social_media: [
                     {
                         name: "Facebook",
-                        url: "https://www.facebook.com/TheLandinginRenton",
+                        url: "https://www.facebook.com/RivermarkVillage/",
                         iconClass: "fab fa-facebook"
                     },
                     {
                         name: "Instagram",
-                        url: "https://www.instagram.com/Thelandinginrenton/",
+                        url: "https://www.instagram.com/rivermarkvillage/",
                         iconClass: "fab fa-instagram"
-                    },
-                    {
-                        name: "YouTube",
-                        url: "https://www.youtube.com/user/TheLandingInRenton",
-                        iconClass: "fab fa-youtube"
                     }
                 ],
             }
