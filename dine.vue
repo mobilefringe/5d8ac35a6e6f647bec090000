@@ -126,11 +126,10 @@
             created (){
                 this.loadData().then(response => {
                     var temp_repo = this.findRepoByName('Dine Banner');
-                    if(temp_repo !== null && temp_repo !== undefined) {
+                    if (temp_repo !== null && temp_repo !== undefined) {
                        temp_repo = temp_repo.images;
                        this.pageBanner = temp_repo[0];
-                    }
-                    else {
+                    } else {
                         this.pageBanner = {
                             "image_url": "//codecloud.cdn.speedyrails.net/sites/5c82cb8f6e6f643f0f010000/image/png/1552582149966/landing_default_banner.png"
                         }
@@ -172,7 +171,7 @@
                     var store_list = [];
                     var vm = this;
                     _.forEach(this.processedStores, function(value, key) {
-                        if(_.includes(value.categories, vm.dineFilter)) {
+                        if (_.includes(value.categories, vm.dineFilter)) {
                             if (_.includes(value.image_url, 'missing')) {
                                 value.image_url = vm.property.default_logo;
                             }
@@ -220,7 +219,11 @@
             methods: {
                 loadData: async function() {
                     try {
-                        let results = await Promise.all([this.$store.dispatch("getData", "categories"), this.$store.dispatch("getData", "repos"), this.$store.dispatch("getData", "subcategories")]);
+                        let results = await Promise.all([
+                            this.$store.dispatch("getData", "categories"), 
+                            this.$store.dispatch("getData", "repos"), 
+                            this.$store.dispatch("getData", "subcategories")
+                        ]);
                     } catch (e) {
                         console.log("Error loading data: " + e.message);
                     }
