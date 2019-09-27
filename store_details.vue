@@ -249,7 +249,7 @@
                         
                         // DELIVERY
                         var categories = this.currentStore.categories;
-                        var delivery_category = 7754;
+                        var delivery_category = 7762;
                         if (_.includes(categories, delivery_category)) {
                             this.deliveryAvailable = true;
                             var subcategories = this.currentStore.subcategories;
