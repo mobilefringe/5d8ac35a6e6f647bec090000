@@ -54,8 +54,8 @@
                                 <mapplic-png-map ref="pngmap_ref" :height="314" :hovertip="true" :storelist="allStores" :floorlist="floorList" :svgWidth="property.map_image_width" :svgHeight="property.map_image_height" @updateMap="updatePNGMap" class="store_details_map"></mapplic-png-map>
                             </div>
                             <div class=" margin_30 store_details_desc" v-html="currentStore.rich_description"></div>
-                            <div>
-                                <h3 class="store_details_title">Delivery Option</h3>
+                            <div v-if="deliveryAvailable" class="margin_30">
+                                <h3 class="store_details_title">Delivery Options</h3>
                                 <div class="store_details_delivery">
                                     <img src="//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1568400931000/doordash.png" alt="Delivery available with DoorDash" />
                                     <img src="//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1568400381000/grubhub.png" alt="Delivery available with Grubhub" />
@@ -142,7 +142,7 @@
                     map: null,
                     storeEvents: null,
                     storePromotions: null,
-                    storeCoupons: null
+                    deliveryAvailable: false
                 }
             },
             props:['id'],
@@ -227,7 +227,8 @@
                         } else {
                             this.currentStore.no_logo = false
                         }
-
+                        
+                        // HOURS
                         var vm = this;
                         var storeHours = [];
                         _.forEach(this.currentStore.store_hours, function (value, key) {
@@ -241,7 +242,16 @@
                             storeHours.push(hours);
                         });
                         this.storeHours = _.sortBy(storeHours, function(o) { return o.day_of_week });
-                    
+                        
+                        // DELIVERY
+                        var categories = this.currentStore.categories;
+                        var delivery_category = 7754;
+                        if (_.includes(categories, delivery_category)) {
+                            this.deliveryAvailable = true;
+                            
+                        }
+                        
+                        //PROMOS
                         var vm = this;
                         var temp_promo = [];
                         _.forEach(this.currentStore.promotions, function(value, key) {
@@ -255,6 +265,7 @@
                         }); 
                         this.storePromotions = temp_promo;
     
+                        // EVENTS
                         var vm = this;
                         var temp_event = [];
                         _.forEach(this.currentStore.events, function(value, key) {
