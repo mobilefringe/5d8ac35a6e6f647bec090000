@@ -57,10 +57,10 @@
                             <div v-if="deliveryAvailable" class="margin_30">
                                 <h3 class="store_details_title">Delivery Options</h3>
                                 <div class="store_details_delivery">
-                                    <img src="//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1568400931000/doordash.png" alt="Delivery available with DoorDash" />
-                                    <img src="//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1568400381000/grubhub.png" alt="Delivery available with Grubhub" />
-                                    <img src="//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1569270191004/postmates.png" alt="Delivery available with Postmates" />
-                                    <img src="//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1568400422000/ubereats.png" alt="Delivery available with Uber Eats" />
+                                    <img class="delivery_option" src="//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1568400931000/doordash.png" alt="Delivery available with DoorDash" />
+                                    <img class="delivery_option" src="//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1568400381000/grubhub.png" alt="Delivery available with Grubhub" />
+                                    <img class="delivery_option" src="//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1569270191004/postmates.png" alt="Delivery available with Postmates" />
+                                    <img class="delivery_option" src="//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1568400422000/ubereats.png" alt="Delivery available with Uber Eats" />
                                     
                                 </div>
                             </div>
