@@ -142,7 +142,11 @@
                     map: null,
                     storeEvents: null,
                     storePromotions: null,
-                    deliveryAvailable: false
+                    deliveryAvailable: false,
+                    hasDoordash: false,
+                    hasGrubhub: false,
+                    hasPostmates: false,
+                    hasUberEats: false
                 }
             },
             props:['id'],
@@ -248,7 +252,18 @@
                         var delivery_category = 7754;
                         if (_.includes(categories, delivery_category)) {
                             this.deliveryAvailable = true;
-                            
+                            var subcategories = this.currentStore.subcategories;
+                            if(!_.isEmpty(subcategories)) {
+                                if (_.includes(subcategories, 7763)) {
+                                    this.hasUberEats = true;
+                                } else if (_.includes(subcategories, 7764)) {
+                                    this.hasDoordash = true;
+                                } else if (_.includes(subcategories, 7765)) {
+                                    this.hasGrubhub = true;
+                                } else if (_.includes(subcategories, 7766)) {
+                                    this.hasPostmates = true;   
+                                }
+                            }
                         }
                         
                         //PROMOS
