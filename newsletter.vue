@@ -124,9 +124,10 @@
                         }
                     }
                     
-                   if(response){
+                    if (response){
                         this.pageContent = response[0].data;
-                   }
+                    }
+                    
                     this.dataLoaded = true;
                 });
             },
