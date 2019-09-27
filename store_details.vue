@@ -256,11 +256,14 @@
                             if(!_.isEmpty(subcategories)) {
                                 if (_.includes(subcategories, 7763)) {
                                     this.hasUberEats = true;
-                                } else if (_.includes(subcategories, 7764)) {
+                                }
+                                if (_.includes(subcategories, 7764)) {
                                     this.hasDoordash = true;
-                                } else if (_.includes(subcategories, 7765)) {
+                                }
+                                if (_.includes(subcategories, 7765)) {
                                     this.hasGrubhub = true;
-                                } else if (_.includes(subcategories, 7766)) {
+                                }
+                                if (_.includes(subcategories, 7766)) {
                                     this.hasPostmates = true;   
                                 }
                             }
