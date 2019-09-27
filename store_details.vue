@@ -56,7 +56,9 @@
                             <div class=" margin_30 store_details_desc" v-html="currentStore.rich_description"></div>
                             <div>
                                 <h3 class="store_details_title">Delivery Option</h3>
-                                
+                                <div class="store_details_delivery">
+                                    <img src="" alt="" />
+                                </div>
                             </div>
                             <div v-if="currentStore.events">
                                 <h3 class="store_details_title">Current Events</h3>
