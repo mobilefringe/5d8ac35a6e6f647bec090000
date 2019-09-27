@@ -822,6 +822,7 @@ img{
     line-height: normal;
     text-align: center;
     text-transform: uppercase;
+    color: #FFF;
     &:before {
         content: '';
         z-index: -1;
