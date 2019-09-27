@@ -139,18 +139,17 @@
             created (){
                 this.loadData().then(response => {
                     var temp_repo = this.findRepoByName('Directory Banner');
-                    if(temp_repo !== null && temp_repo !== undefined) {
+                    if (temp_repo !== null && temp_repo !== undefined) {
                        temp_repo = temp_repo.images;
                        this.pageBanner = temp_repo[0];
-                    }
-                    else {
+                    } else {
                         this.pageBanner = {
                             "image_url": "//codecloud.cdn.speedyrails.net/sites/5c82cb8f6e6f643f0f010000/image/png/1552582149966/landing_default_banner.png"
                         }
                     }
+                    this.updateCurrentStore(this.id);
                     
                     this.dataLoaded = true;
-                    this.updateCurrentStore(this.id);
                 });
             },
             watch: {
@@ -197,7 +196,12 @@
             methods: {
                 loadData: async function () {
                     try {
-                        let results = await Promise.all([this.$store.dispatch("getData", "stores"), this.$store.dispatch("getData","events"), this.$store.dispatch("getData","promotions"), this.$store.dispatch("getData","coupons"), this.$store.dispatch("getData", "repos")]);
+                        let results = await Promise.all([
+                            this.$store.dispatch("getData", "stores"), 
+                            this.$store.dispatch("getData","events"), 
+                            this.$store.dispatch("getData","promotions"), 
+                            this.$store.dispatch("getData", "repos")
+                        ]);
                     } catch (e) {
                         console.log("Error loading data: " + e.message);
                     }
@@ -213,10 +217,7 @@
                         } else {
                             this.currentStore.no_logo = false
                         }
-                        // if (_.includes(this.currentStore.store_front_url_abs, 'missing')) {
-                        //     this.currentStore.store_front_url_abs = this.property.default_logo;
-                        // }
-                        
+
                         var vm = this;
                         var storeHours = [];
                         _.forEach(this.currentStore.store_hours, function (value, key) {
@@ -230,7 +231,6 @@
                             storeHours.push(hours);
                         });
                         this.storeHours = _.sortBy(storeHours, function(o) { return o.day_of_week });
-                        console.log(this.storeHours)
                     
                         var vm = this;
                         var temp_promo = [];
@@ -257,19 +257,8 @@
                             temp_event.push(current_event);
                         }); 
                         this.storeEvents = temp_event;
-                        
-                        var vm = this;
-                        var temp_coupon = [];
-                        _.forEach(this.currentStore.coupons, function(value, key) {
-                            var current_coupon = vm.findCouponById(value);
-                            // if (_.includes(current_coupon.image_url, 'missing')) {
-                            //     current_coupon.image_url = "http://placehold.it/1560x800/757575";
-                            // }
-    
-                            temp_coupon.push(current_coupon);
-                        }); 
-                        // this.storeCoupons = temp_coupon;
                     }
+                    
                     this.$breadcrumbs[1].meta.breadcrumb = this.currentStore.name
                 },
                 updatePNGMap(map) {
