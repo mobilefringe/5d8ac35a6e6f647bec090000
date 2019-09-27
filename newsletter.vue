@@ -49,13 +49,9 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <label for="newsletter_email" class="accessibility">Email</label>
-                                        <input v-model="form_data.email" required class="margin_20 form-control" name="cm-qtttjt-qtttjt" type="email" placeholder="Email" id="newsletter_email">
+                                        <label for="fieldEmail" class="accessibility">Email</label>
+                                        <input v-model="form_data.email" required class="margin_20 form-control" id="fieldEmail" name="cm-yhidpu-yhidpu" type="email" placeholder="Email" />
                                     </div>
-                                    <!--<div class="col-sm-6">-->
-                                    <!--    <label for="fieldglrtdr" class="accessibility">Phone Number</label>-->
-                                    <!--    <input id="fieldglrtdr" v-model="form_data.phone" required class="margin_20 form-control" name="cm-f-glrtdr" type="text" placeholder="Phone Number" />-->
-                                    <!--</div>-->
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -108,17 +104,13 @@
                 }
             },
             mounted () {
-                this.form_data.first_name = this.$route.query.name;
-                $("#fieldglrtiu").val(this.form_data.first_name);
                 this.form_data.email = this.$route.query.email;
-                $("#newsletter_email").val(this.form_data.email);
+                $("#fieldEmail").val(this.form_data.email);
             },
             watch : {
                 $route () {
-                    this.form_data.first_name = this.$route.query.name;
-                    $("#fieldglrtiu").val(this.form_data.first_name);
                     this.form_data.email = this.$route.query.email;
-                    $("#newsletter_email").val(this.form_data.email);
+                    $("#fieldEmail").val(this.form_data.email);
                 }
             },
             created() {
