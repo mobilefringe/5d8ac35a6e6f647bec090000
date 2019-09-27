@@ -254,20 +254,17 @@
                         
                         if (_.includes(categories, delivery_category) && !_.isEmpty(subcategories)) {
                             this.deliveryAvailable = true;
-                            
-                            if(!_.isEmpty(subcategories)) {
-                                if (_.includes(subcategories, 7763)) {
-                                    this.hasUberEats = true;
-                                }
-                                if (_.includes(subcategories, 7764)) {
-                                    this.hasDoordash = true;
-                                }
-                                if (_.includes(subcategories, 7765)) {
-                                    this.hasGrubhub = true;
-                                }
-                                if (_.includes(subcategories, 7766)) {
-                                    this.hasPostmates = true;   
-                                }
+                            if (_.includes(subcategories, 7763)) {
+                                this.hasUberEats = true;
+                            }
+                            if (_.includes(subcategories, 7764)) {
+                                this.hasDoordash = true;
+                            }
+                            if (_.includes(subcategories, 7765)) {
+                                this.hasGrubhub = true;
+                            }
+                            if (_.includes(subcategories, 7766)) {
+                                this.hasPostmates = true;   
                             }
                         }
                         
