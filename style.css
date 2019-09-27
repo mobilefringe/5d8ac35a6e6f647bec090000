@@ -345,7 +345,7 @@ img{
                 }
             	&:hover, &:active, &:focus, &:visited {
             	    color: $secondary;
-            	    background-color: rgb(222,182,49);
+            	    background-color: $secondary;
             	}
             	p {
             	    margin: 0;
