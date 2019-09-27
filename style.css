@@ -344,7 +344,7 @@ img{
                     color: inherit;
                 }
             	&:hover, &:active, &:focus, &:visited {
-            	    color: $secondary;
+            	   // color: $secondary;
             	    background-color: $secondary;
             	}
             	p {
