@@ -343,12 +343,12 @@ img{
                 a:hover {
                     color: inherit;
                 }
+                p {
+            	    margin: 0;
+            	}
             	&:hover, &:active, &:focus, &:visited {
             	   // color: $secondary;
             	    background-color: $secondary;
-            	}
-            	p {
-            	    margin: 0;
             	}
             }
         }
