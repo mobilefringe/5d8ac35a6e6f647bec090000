@@ -373,7 +373,7 @@ img{
         text-transform: uppercase;
         span {
             font-family: 'Roboto Condensed', sans-serif;
-            color: #000;
+            // color: #000;
         }
         #userName, #emailAddress {
             margin-left: 10px;
