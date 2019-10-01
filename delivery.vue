@@ -5,7 +5,7 @@
             <div v-if="dataLoaded" v-cloak>
         		<div class="inside_page_header" v-if="pageBanner" v-bind:style="{ background: 'linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), #000 url(' + pageBanner.image_url + ') center center' }">
                     <div class="main_container position_relative">
-                        <h2>Dining</h2>
+                        <h2>Delivery</h2>
                     </div>
                 </div>
         		<div class="main_container">
@@ -106,7 +106,7 @@
     define(["Vue", "vuex", "vue-select", "vue!search-component", "masonry" , "vue-masonry-plugin"], function(Vue, Vuex, VueSelect, SearchComponent, masonry, VueMasonryPlugin) {
         Vue.component('v-select', VueSelect.VueSelect);
         Vue.use(VueMasonryPlugin.default);
-        return Vue.component("dine-component", {
+        return Vue.component("delivery-component", {
             template: template, // the variable template will be injected
             data: function() {
                 return {
@@ -120,12 +120,12 @@
                     toggleText: "Display as List",
                     logoView: true,
                     listView: false,
-                    dineFilter: 7754
+                    deliveryFilter: 7762
                 }
             },
             created (){
                 this.loadData().then(response => {
-                    var temp_repo = this.findRepoByName('Dine Banner');
+                    var temp_repo = this.findRepoByName('Delivery Banner');
                     if (temp_repo !== null && temp_repo !== undefined) {
                        temp_repo = temp_repo.images;
                        this.pageBanner = temp_repo[0];
@@ -171,7 +171,7 @@
                     var store_list = [];
                     var vm = this;
                     _.forEach(this.processedStores, function(value, key) {
-                        if (_.includes(value.categories, vm.dineFilter)) {
+                        if (_.includes(value.categories, vm.deliveryFilter)) {
                             if (_.includes(value.image_url, 'missing')) {
                                 value.image_url = vm.property.default_logo;
                             }
@@ -183,10 +183,10 @@
                 },
                 dropDownCats() {
                     var vm = this;
-                    var dining_cat =  _.find(this.processedCategories, function(o) { return o.name == "Dining"});
+                    var delivery_cat =  _.find(this.processedCategories, function(o) { return o.name == "Delivery"});
                     var subcategories = [];
-                    if (dining_cat !== null && dining_cat !== undefined) {
-                       subcategories = vm.findSubcategoriesByParentID(dining_cat.id);
+                    if (delivery_cat !== null && delivery_cat !== undefined) {
+                       subcategories = vm.findSubcategoriesByParentID(delivery_cat.id);
                     }
                     subcategories = _.map(subcategories, 'name').sort();
                     subcategories.unshift('All Cuisine');
