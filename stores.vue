@@ -174,7 +174,6 @@
                     var vm = this;
                     _.forEach(this.processedStores, function(value, key) {
                         if (_.includes(value.image_url, 'missing')) {
-                            console.log(value)
                            value.no_store_logo = true;
                         } else {
                           value.no_store_logo = false;
