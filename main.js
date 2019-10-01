@@ -107,6 +107,11 @@ require(['Vue', 'vuex', 'vue2-filters', 'vue_router', 'routes', 'vuex-router-syn
                                 name: "Dining",
                                 href: "/dine",
                                 target: null
+                            },
+                            {
+                                name: "Delivery",
+                                href: "/delivery",
+                                target: null
                             }
                         ]
                     },
