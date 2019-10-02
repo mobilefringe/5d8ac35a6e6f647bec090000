@@ -158,11 +158,11 @@
                             }
 
                             if (value.store != null && value.store != undefined && _.includes(value.store.image_url, 'missing')) {
-                                value.store.image_url = "//codecloud.cdn.speedyrails.net/sites/5c82cb8f6e6f643f0f010000/image/png/1552583012044/landing_placeholder.png";
+                                value.store.image_url = "//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1570045481000/rivermark_placeholder_images.png";
                             }
                             
                             if (_.includes(value.image_url, 'missing')) {
-                                value.image_url = "//codecloud.cdn.speedyrails.net/sites/5c82cb8f6e6f643f0f010000/image/png/1552583012044/landing_placeholder.png";
+                                value.image_url = "//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1570045481000/rivermark_placeholder_images.png";
                             }
                             
                             value.description_short = _.truncate(value.description, { 'length': 250, 'separator': ' ' });
@@ -182,11 +182,11 @@
                         var showOnWebDate = moment.tz(value.show_on_web_date, this.timezone).format();
                         if (today >= showOnWebDate) {
                             if (value.store != null && value.store != undefined && _.includes(value.store.image_url, 'missing')) {
-                                value.store.image_url = "//codecloud.cdn.speedyrails.net/sites/5c82cb8f6e6f643f0f010000/image/png/1552583012044/landing_placeholder.png";
+                                value.store.image_url = "//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1570045481000/rivermark_placeholder_images.png";
                             }
                             
                             if (_.includes(value.image_url, 'missing')) {
-                                value.image_url = "//codecloud.cdn.speedyrails.net/sites/5c82cb8f6e6f643f0f010000/image/png/1552583012044/landing_placeholder.png";
+                                value.image_url = "//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1570045481000/rivermark_placeholder_images.png";
                             }
                             
                             value.description_short = _.truncate(value.description, { 'length': 250, 'separator': ' ' });
