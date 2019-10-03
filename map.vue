@@ -171,7 +171,6 @@
                     }
                 },
                 dropPin(store) {
-                    console.log(store)
                     this.pngMapRef.showLocation(store.id);
                 },
                 onOptionSelect(option) {
