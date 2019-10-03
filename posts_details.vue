@@ -99,7 +99,6 @@
 			watch: {
                 currentPromo : function (){
                     if(this.currentPromo != null) {
-                        console.log("currentPromo", this.currentPromo);
                         if (this.currentPromo.promotionable_type === "Store"){
                             if  (_.includes(this.currentPromo.promo_image_url_abs, 'missing')) {
                                 this.currentPromo.image_url = this.currentPromo.store.store_front_url_abs; 
