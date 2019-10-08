@@ -131,7 +131,7 @@
 </style>
 
 <script>
-    define(["Vue", "vuex", "moment", "vue!mapplic-png-map"], function (Vue, Vuex, moment, MapplicComponent) {
+    define(["Vue", "vuex", "moment", "vue!mapplic-map"], function (Vue, Vuex, moment, MapplicComponent) {
         return Vue.component("store-details-component", {
             template: template, // the variable template will be injected,
             props: ['id'],
@@ -164,7 +164,9 @@
                             "image_url": "//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1570045481000/rivermark_placeholder_images.png"
                         }
                     }
+                    
                     this.updateCurrentStore(this.id);
+                    this.getSVGMap
                     
                     this.dataLoaded = true;
                 });
@@ -186,27 +188,48 @@
                     'findCouponById',
                     'findRepoByName'
                 ]),
-                getPNGurl () {
-                    return "https://www.mallmaverick.com" + this.property.map_url;
-                },
-                pngMapRef() {
-                    return this.$refs.pngmapref;
-                },
+                // getPNGurl () {
+                //     return "https://www.mallmaverick.com" + this.property.map_url;
+                // },
+                // pngMapRef() {
+                //     return this.$refs.pngmapref;
+                // },
                 allStores() {
                     this.processedStores.map(function(store){
                         store.zoom = 1;
                     })
                     return this.processedStores;
                 },
+                svgMapRef() {
+                    return this.$refs.svgmap_ref;
+                },
+                // floorList () {
+                //     var floor_list = [];
+                //     var floor_1 = {};
+                //     floor_1.id = "first-floor";
+                //     floor_1.title = "Level One";
+                //     floor_1.map = this.getPNGurl;
+                //     floor_1.z_index = null;
+                //     floor_1.show = true;
+                //     floor_list.push(floor_1);
+                //     return floor_list;
+                // }
                 floorList () {
                     var floor_list = [];
-                    var floor_1 = {};
-                    floor_1.id = "first-floor";
-                    floor_1.title = "Level One";
-                    floor_1.map = this.getPNGurl;
-                    floor_1.z_index = null;
-                    floor_1.show = true;
-                    floor_list.push(floor_1);
+                    // Get SVG Maps from Repo
+                    var floor_maps_repo = this.findRepoByName('SVG Map');
+                    if(floor_maps_repo !== null && floor_maps_repo !== undefined && floor_maps_repo.images.length > 0){
+                        floor_maps = floor_maps_repo.images;
+                        if (this.currentStore.z_coordinate == 1) {
+                            var floor_1 = {};
+                            floor_1.id = "first-floor";
+                            floor_1.title = "Level 1";
+                            floor_1.map = _.find(floor_maps, function(o){ return _.toNumber(o.id) == _.toNumber(42816);}).image_url;
+                            floor_1.z_index = 1;
+                            floor_1.show = true;
+                            floor_list.push(floor_1);
+                        }
+                    }
                     return floor_list;
                 }
             },
