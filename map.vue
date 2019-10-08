@@ -184,7 +184,7 @@
                     }
                 },
                 dropPin(store) {
-                    this.$refs.mapplic_ref.showLocation(store.svgmap_region);
+                    this.pngMapRef.mapplic_ref.showLocation(store.svgmap_region);
                 },
                 onOptionSelect(option) {
                     this.$nextTick(function() {
