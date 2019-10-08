@@ -184,7 +184,6 @@
                     }
                 },
                 dropPin(store) {
-                    console.log('store.svgmap_region', store.svgmap_region)
                     this.pngMapRef.showLocation(store.svgmap_region);
                 },
                 onOptionSelect(option) {
