@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="col-md-9">
-                            <mapplic-png-map ref="pngmap_ref" :height="664" :hovertip="true" :storelist="allStores" :floorlist="floorList" :bindLocationOpened="true" :svgWidth="property.map_image_width" :svgHeight="property.map_image_height" :showPin="true" tooltiplabel="View Store Details"></mapplic-png-map>
+                            <mapplic-map ref="pngmap_ref" :height="664" :hovertip="true" :storelist="allStores" :floorlist="floorList" :bindLocationOpened="true" :svgWidth="property.map_image_width" :svgHeight="property.map_image_height" :showPin="true" tooltiplabel="View Store Details"></mapplic-map>
                         </div>
                     </div>
                 </div>
