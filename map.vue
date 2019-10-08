@@ -3,7 +3,7 @@
         <loading-spinner v-if="!dataLoaded"></loading-spinner>
         <transition name="fade">
             <div v-if="dataLoaded" v-cloak>
-                <div class="inside_page_header" v-if="pageBanner" v-bind:style="{ background: 'linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), #000 url(' + pageBanner.image_url + ') center center' }">
+                <div class="inside_page_header" v-bind:style="{ background: 'linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), #5d7e67 url(' + pageBanner.image_url + ') center center' }">
                     <div class="main_container position_relative">
                         <h2>Center Map</h2>
                     </div>
@@ -35,7 +35,6 @@
                                     :suggestion-attribute="suggestionAttribute" 
                                     @select="onOptionSelect" 
                                     :threshold="1"
-                                    class="mapSearch"
                                 >
                                     <template slot="item" scope="option">
                                         <article class="media">
@@ -43,13 +42,14 @@
                                         </article>
                                     </template>
                                 </search-component>
+                                <i id="store-search-icon" class="fa fa-search" aria-hidden="true"></i>
                             </div>
                             <div class="store_list_container" v-if="filteredStores">
                                 <p class="store_name" v-for="store in filteredStores" v-on:click="dropPin(store)">{{store.name}}</p>
                             </div>
                         </div>
                         <div class="col-md-9">
-                            <mapplic-map ref="pngmap_ref" :height="664" :minimap= "false" :deeplinking="false" :sidebar="false"  :hovertip="true" :storelist="mapStores" :floorlist="floorList" :bindLocationOpened="true" :svgWidth="property.map_image_width" :svgHeight="property.map_image_height" :showPin="true" tooltiplabel="View Store Details"></mapplic-map>
+                            <mapplic-map ref="mapplic_ref" :svgWidth="1500" :svgHeight="1500" :height="664" :minimap= "false" :deeplinking="false" :sidebar="false" :hovertip="true" :maxscale= "5" :storelist="allStores" :floorlist="floorList" tooltiplabel="View Store Details"></mapplic-map>
                         </div>
                     </div>
                 </div>
@@ -65,58 +65,52 @@
             data: function() {
                 return {
                     dataLoaded: false,
+                    pageBanner: null,
                     selectedCat: null,
                     filteredStores: null,
                     suggestionAttribute: "name",
                     storeSearch: null,
                     currentSelection: null,
+                    dineFilter: 5962,
+                    floorOne: null
                 }
             },
             created (){
                 this.loadData().then(response => {
-                    var temp_repo = this.findRepoByName('Map Banner');
-                    if(temp_repo != null && temp_repo != undefined) {
-                        this.pageBanner = temp_repo.images[0];
+                    var temp_repo = this.findRepoByName('Map Banner').images;
+                    if(temp_repo != null) {
+                        this.pageBanner = temp_repo[0];
                     } else {
                         this.pageBanner = {
-                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5d8ac35a6e6f647bec090000/image/png/1570045469000/rivermark_inside_banner.png"
+                            "image_url": "//codecloud.cdn.speedyrails.net/sites/5d700e9c6e6f647c7f750000/image/jpeg/1529532304000/insidebanner2.jpg"
                         }
                     }
-                    
-                   if(response){
-                        this.pageContent = response[0].data;
-                   }
-                    this.allCatergories
+                    this.getSVGMap;
                     this.dataLoaded = true;
                 });
             },
             computed: {
                 ...Vuex.mapGetters([
                     'property',
+                    'findRepoByName',
                     'processedStores',
                     "processedCategories",
                     "storesByCategoryName",
-                    'findCategoryByName',
-                    "findRepoByName",
-                    "findCategoryById"
+                    'findCategoryByName'
                 ]),
                 allStores() {
-                    this.processedStores.map(function(store){
-                        store.zoom = 1;
-                    })
-                    return this.processedStores;
+                    var all_stores = this.processedStores;
+                    _.forEach(all_stores, function(value, key) {
+                        value.zoom = 2;
+                    });
+                    return all_stores
                 },
                 allCatergories() {
                     return this.processedCategories;
-                    // categories = _.filter(categories, function(o) { 
-                    //     return o.store_ids !== null });
-                    // return categories;
                 },
                 dropDownCats() {
-                    var categories = this.processedCategories;
-                    categories = _.filter(categories, function(o) { 
-                        return o.store_ids !== null });
-                    var cats = _.map(categories, 'name');
+                    var cats = _.filter(this.processedCategories, function(o) { return o.name != "Dine Filter"; });
+                    cats = _.map(cats, 'name');
                     cats.unshift('All');
                     return cats;
                 },
@@ -130,7 +124,7 @@
                     if (category_id == "All") {
                         this.filteredStores = this.allStores;
                     } else {
-                        var find = this.findCategoryById(category_id);
+                        var find = this.findCategoryById;
                         var filtered = _.filter(this.allStores, function(o) {
                             return _.indexOf(o.categories, _.toNumber(category_id)) > -1;
                         });
@@ -141,35 +135,30 @@
                         el.classList.remove("open");
                     }
                 },
-                getSVGMap(){
-                    console.log(this.property.svgmap_url)
-                  return "//mallmaverick.com"+this.property.svgmap_url;  
-            
-                },
-                pngMapRef() {
-                    return this.$refs.pngmap_ref;
-                },
-                
-                mapStores() {
-                    var all_stores = this.processedStores;
-                    _.forEach(all_stores, function(value, key) {
-                        value.zoom = 2;
-                        if(value.svgmap_region == null){
-                            value.svgmap_region = value.id;
+                // getSVGMap () {
+                //     var mapURL = "https://www.mallmaverick.com" + this.property.svgmap_url.split("?")[0];
+                //     return mapURL
+                // },
+                getSVGMap() {
+                    var svg_maps = this.findRepoByName("SVG Map").images 
+                    var floor_one = "";
+                    _.forEach(svg_maps, function(value, key) {
+                        if(value.id == 42816) {
+                            floor_one = _.split(value.image_url, '?');
+                            floor_one = floor_one[0];
                         }
                     });
-                    return all_stores;
+                    this.floorOne = floor_one;
                 },
                 floorList () {
                     var floor_list = [];
-                    
                     var floor_1 = {};
                     floor_1.id = "first-floor";
-                    floor_1.title = "Floor 1";
-                    floor_1.map = this.getSVGMap;
-                    floor_1.z_index = null;
+                    floor_1.title = "Level One";
+                    // floor_1.map = this.getSVGMap
+                    floor_1.map = this.floorOne;
+                    floor_1.z_index = 1;
                     floor_1.show = true;
-                    
                     floor_list.push(floor_1);
                     return floor_list;
                 }
@@ -183,14 +172,14 @@
                         console.log("Error loading data: " + e.message);
                     }
                 },
-                dropPin(store) {
-                    this.pngMapRef.showLocation(store.svgmap_region);
-                },
                 onOptionSelect(option) {
                     this.$nextTick(function() {
                         this.storeSearch = ""
                     });
-                    this.pngMapRef.showLocation(option.id);
+                    this.svgMapRef.addMarker(option);
+                },
+                dropPin(store) {
+                    this.$refs.mapplic_ref.showLocation(store.svgmap_region);
                 }
             }
         });
