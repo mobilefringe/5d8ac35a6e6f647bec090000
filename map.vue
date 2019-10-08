@@ -142,7 +142,7 @@
                     }
                 },
                 getPNGurl() {
-                    return "https://www.mallmaverick.com" + this.property.map_url;
+                    return "https://www.mallmaverick.com" + this.property.svgmap_url;
                 },
                 pngMapRef() {
                     return this.$refs.pngmap_ref;
