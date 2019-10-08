@@ -51,7 +51,7 @@
                         </div>
                         <div class="col-md-8">
                             <div id="map" class="margin_20">
-                                <mapplic-map ref="svgmap_ref" :height="300" :minimap= "false" :deeplinking="false" :sidebar="false" :hovertip="true" :maxscale= "5" :storelist="processedStores" :floorlist="floorList" :svgWidth="1500" :svgHeight="1500" @updateMap="updateSVGMap" :key="currentStore.id"></mapplic-map>
+                                <mapplic-map ref="svgmap_ref" :height="300" :minimap= "false" :deeplinking="false" :sidebar="false" :hovertip="true" :maxscale= "5" :storelist="processedStores" :floorlist="floorList" :svgWidth="2500" :svgHeight="2500" @updateMap="updateSVGMap" :key="currentStore.id"></mapplic-map>
                                 
                             </div>
                             <div class=" margin_30 store_details_desc" v-html="currentStore.rich_description"></div>
