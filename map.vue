@@ -58,7 +58,7 @@
     </div>
 </template>
 <script>
-    define(["Vue", "vuex", "vue-select", "vue!search-component", "vue!mapplic-png-map"], function(Vue, Vuex, VueSelect, SearchComponent, MapplicComponent) {
+    define(["Vue", "vuex", "vue-select", "vue!search-component", "vue!mapplic-map"], function(Vue, Vuex, VueSelect, SearchComponent, MapplicComponent) {
         Vue.component('v-select', VueSelect.VueSelect);
         return Vue.component("stores-component", {
             template: template, // the variable template will be injected
@@ -141,8 +141,8 @@
                         el.classList.remove("open");
                     }
                 },
-                getPNGurl() {
-                    return "https://www.mallmaverick.com" + this.property.svgmap_url;
+                getSVGMap(){
+                  return "//mallmaverick.com"+this.property.svgmap_url;  
                 },
                 pngMapRef() {
                     return this.$refs.pngmap_ref;
@@ -153,7 +153,7 @@
                     var floor_1 = {};
                     floor_1.id = "first-floor";
                     floor_1.title = "Floor 1";
-                    floor_1.map = this.getPNGurl;
+                    floor_1.map = this.getSVGurl;
                     floor_1.z_index = null;
                     floor_1.show = true;
                     
