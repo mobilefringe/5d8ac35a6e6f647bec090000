@@ -203,6 +203,11 @@
                 svgMapRef() {
                     return this.$refs.svgmap_ref;
                 },
+                getSVGMap () {
+                    console.log(this.property)
+                    var mapURL = "https://www.mallmaverick.com" + this.property.svgmap_url.split("?")[0];
+                    return mapURL
+                },
                 floorList () {
                     var floor_list = [];
                     var floor_1 = {};
