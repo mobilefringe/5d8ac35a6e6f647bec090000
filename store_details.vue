@@ -188,12 +188,6 @@
                     'findCouponById',
                     'findRepoByName'
                 ]),
-                // getPNGurl () {
-                //     return "https://www.mallmaverick.com" + this.property.map_url;
-                // },
-                // pngMapRef() {
-                //     return this.$refs.pngmapref;
-                // },
                 allStores() {
                     this.processedStores.map(function(store){
                         store.zoom = 1;
@@ -204,7 +198,6 @@
                     return this.$refs.svgmap_ref;
                 },
                 getSVGMap () {
-                    console.log(this.property)
                     var mapURL = "https://www.mallmaverick.com" + this.property.svgmap_url.split("?")[0];
                     return mapURL
                 },
@@ -219,24 +212,6 @@
                     floor_list.push(floor_1);
                     return floor_list;
                 }
-                // floorList () {
-                //     var floor_list = [];
-                //     // Get SVG Maps from Repo
-                //     var floor_maps_repo = this.findRepoByName('SVG Map');
-                //     if(floor_maps_repo !== null && floor_maps_repo !== undefined && floor_maps_repo.images.length > 0){
-                //         floor_maps = floor_maps_repo.images;
-                //         if (this.currentStore.z_coordinate == 1) {
-                //             var floor_1 = {};
-                //             floor_1.id = "first-floor";
-                //             floor_1.title = "Level 1";
-                //             floor_1.map = _.find(floor_maps, function(o){ return _.toNumber(o.id) == _.toNumber(42816);}).image_url;
-                //             floor_1.z_index = 1;
-                //             floor_1.show = true;
-                //             floor_list.push(floor_1);
-                //         }
-                //     }
-                //     return floor_list;
-                // }
             },
             methods: {
                 loadData: async function () {
@@ -331,13 +306,6 @@
                     
                     this.$breadcrumbs[1].meta.breadcrumb = this.currentStore.name
                 },
-                // updatePNGMap(map) {
-                //     this.map = map;
-                //     this.dropPin(this.currentStore);
-                // },
-                // dropPin(store) {
-                //     this.$refs.pngmap_ref.showLocation(store.id);
-                // },
                 updateSVGMap(map) {
                     this.map = map;
                     this.svgMapRef.showLocation(this.currentStore.svgmap_region);
