@@ -188,12 +188,12 @@
                     'findCouponById',
                     'findRepoByName'
                 ]),
-                allStores() {
-                    this.processedStores.map(function(store){
-                        store.zoom = 1;
-                    })
-                    return this.processedStores;
-                },
+                // allStores() {
+                //     this.processedStores.map(function(store){
+                //         store.zoom = 1;
+                //     })
+                //     return this.processedStores;
+                // },
                 svgMapRef() {
                     return this.$refs.svgmap_ref;
                 },
