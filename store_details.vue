@@ -231,6 +231,7 @@
                     if (this.currentStore === null || this.currentStore === undefined) {
                         this.$router.replace({ name: 'stores' });
                     } else {
+                        console.log("this.currentStore", this.currentStore)
                         if (_.includes(this.currentStore.store_front_url_abs, 'missing')) {
                             this.currentStore.no_logo = true
                         } else {
