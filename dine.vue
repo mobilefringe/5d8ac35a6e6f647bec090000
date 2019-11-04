@@ -189,6 +189,7 @@
                        subcategories = vm.findSubcategoriesByParentID(dining_cat.id);
                     }
                     subcategories = _.map(subcategories, 'name').sort();
+                    console.log(subcategories)
                     subcategories.unshift('All Cuisine');
                     return subcategories;
                 },
