@@ -187,6 +187,7 @@
                     if (delivery_cat !== null && delivery_cat !== undefined) {
                        subcategories = vm.findSubcategoriesByParentID(delivery_cat.id);
                     }
+                    subcategories = _.filter(subcategories, function(o) { return o.store_ids !== null});
                     subcategories = _.map(subcategories, 'name').sort();
                     subcategories.unshift('All Cuisine');
                     return subcategories;
