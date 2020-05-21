@@ -67,7 +67,7 @@
                                             </div>
                                 			<div v-if="store.store_flags">
             								    <div class="store_tag" v-for="(tag, index) in store.store_flags">
-                                                    <div class="store_tag_text">{{ tag }}</div>
+                                                    <div class="store_tag_text">{{ beautify(tag) }}</div>
             								    </div>
                                             </div>
             								<div class="store_details">
@@ -274,6 +274,12 @@
                 onOptionSelect(option) {
                     this.search_result = "";
                     this.$router.push("/stores/" + option.slug);
+                },
+                beautify(item) {
+                    var str = _.replace(item, "_", " ")
+                    str = _.replace(str, "_", " ")
+                    str = _.replace(str, "_", " ")
+                    return str
                 }
             },
             beforeDestroy: function() {
